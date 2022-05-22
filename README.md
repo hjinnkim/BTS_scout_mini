@@ -1,75 +1,55 @@
 [TOC]
 
-# Scout Simulation Operation Process
+# BTS project
+# Implementing Autonomous Driving System with AgileX Scout-mini
 
-## 1.	Introduction of Function Package
+## For Detailed Simulation Function Package, Refer ugv_gazebo_sim/scout
+---
+## Install the Gazebo software
 
-```
-├── scout_control
-├── scout_description
-└── scout_gazebo_sim
-```
+Gazebo is  a simulator. Gazebo simulates multiple robots in a 3D environment, with extensive dynamic interaction between objects.
 
-​	scout_gazebo_sim：The folder is gazebo simulation function package
+[http://gazebosim.org](http://gazebosim.org/)
 
-​	scout_control: The folder is simulation controller function package
+Download and install gazebo you can go to the website :http://gazebosim.org/install
 
-​	scout_description: The folder is the function package of model file
+------
 
-## 2.	Environment
+## 	1.  Environment
 
 ### Development Environment
 
 ​	ubuntu 18.04 + [ROS Melodic desktop full](http://wiki.ros.org/melodic/Installation/Ubuntu)
 
-### Download and install required function package
+### Also Tested on
 
-​	Download and install ros-control function package, ros-control is the robot control middleware provided by ROS
+​	ubuntu 20.04 + [ROS Noetic desktop full](http://wiki.ros.org/noetic/Installation/Ubuntu)
 
-```
-sudo apt-get install ros-melodic-ros-control
-```
 
-​	Download and install ros-controllers function package, ros-controllers are the kinematics plug-in of common models provided by ROS
+## 2.   Download and install required function package
 
-```
-sudo apt-get install ros-melodic-ros-controllers
-```
+### For detailed description for installed packages, refer ugv_gazebo_sim/scout
 
-​	Download and install gazebo-ros function package, gazebo-ros is the communication interface between gazebo and ROS, and connect the ROS and Gazebo
+1. ROS melodic
 
 ```
-sudo apt-get install ros-melodic-gazebo-ros
+sudo apt-get install ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard 
 ```
 
-​	Download and install gazebo-ros-control function package, gazebo-ros-control is the communication standard controller between ROS and Gazebo
+2. ROS noetic
 
 ```
-sudo apt-get install ros-melodic-gazebo-ros-control
+sudo apt-get install ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-gazebo-ros ros-noetic-gazebo-ros-control ros-noetic-joint-state-publisher-gui ros-noetic-teleop-twist-keyboard 
 ```
-
-​	Download and install joint-state-publisher-gui package.This package is used to visualize the joint control.
-
-```
-sudo apt-get install ros-melodic-joint-state-publisher-gui 
-```
-
-​	Download and install teleop-twist-keyboard function package, telop-twist-keyboard is keyboard control function package, the robot can be controlled to move forward, left, right and backward through "i", "j", "l",and "," on the keyboard
-
-```
-sudo apt-get install ros-melodic-teleop-twist-keyboard 
-```
-
-
 
 ## 3.	About Usage
 
-### 1、1.	Create workspace, download simulation model function package and compile
+### 1.	Create workspace, download simulation model function package and compile
 
 ​		Open a new terminal and create a workspace named scout_ws, enter in the terminal:
 
 ```
-mkdir scout_ws
+mkdir -p scout_ws/src
 ```
 
 ​		Enter the scout_ws folder
@@ -78,10 +58,10 @@ mkdir scout_ws
 cd scout_ws
 ```
 
-​		Create a folder to store function package named src
+​		Initialize workspace
 
 ```
-mkdir src
+catkin_make
 ```
 
 ​		Enter the src folder
@@ -90,16 +70,10 @@ mkdir src
 cd src
 ```
 
-​		Initialize folder
-
-```
-catkin_init_workspace
-```
-
 ​		Download simulation model function package
 
 ```
-git clone https://github.com/agilexrobotics/ugv_sim/scout.git
+git clone --recursive https://github.com/hjinnkim/BTS_scout_mini.git
 ```
 
 ​		Enter the scout_ws folder
@@ -121,7 +95,7 @@ catkin_make
 
 
 
-### 2、2.	Run the star file of scout_v2 and scout_mini, and visualize the urdf file in Rviz
+### 2.	Run the star file of scout_v2 and scout_mini, and visualize the urdf file in Rviz
 
 ​	Enter the scout_ws folder
 
@@ -171,7 +145,6 @@ source devel/setup.bash
 roslaunch scout_gazebo_sim scout_empty_world.launch
 ```
 
-![img](image/scoutv2_gazebo.png) 
 
 #Control by keyboard, the scout2.0 and scout_mini can be controlled to move forward, left, right and backward through "i", "j", "l",and "," on the keyboard
 
@@ -179,7 +152,6 @@ roslaunch scout_gazebo_sim scout_empty_world.launch
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py 
 ```
 
-![img](image/teleop.png) 
 
 ​	Start the simulation environment of scout_mini
 
@@ -187,15 +159,12 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 roslaunch scout_gazebo_sim scout_mini_playpen.launch
 ```
 
-![img](image/scout_mini_gazebo.png) 
-
 #Control by keyboard, the scout2.0 and scout_mini can be controlled to move forward, left, right and backward through "i", "j", "l",and "," on the keyboard
 
 ```
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py 
 ```
 
-![img](image/teleop.png) 
 
 
 
