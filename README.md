@@ -115,15 +115,13 @@ source devel/setup.bash
 roslaunch scout_description display_scout_v2.launch 
 ```
 
-![img](image/scoutv2_rviz.png) 
 
 ​	Run the start file of scout_mini model and visualize the model in Rviz
 
 ```
 roslaunch scout_description display_scout_mini.launch 
 ```
-
-![img](image/scout_mini_rviz.png) 
+ 
 
 ### 3、3.	Start the gazebo simulation environment of scout_v2 and scout_mini and control scout_v2 and scout_mini movement in the gazebo
 
