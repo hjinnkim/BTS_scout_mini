@@ -166,29 +166,29 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ---
 ## 4.   Sensors
 ### Add LiDAR
-Reference
+#### Reference
 
-https://www.youtube.com/watch?v=jJzzw2jk-lY
+* https://www.youtube.com/watch?v=jJzzw2jk-lY
 
-https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#GPULaser
+* https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#GPULaser
 
-https://level-asphalt-6c6.notion.site/Gazebo-Scout-mini-add-lidar-086c23578e904467864f284ad02c8564
+* https://level-asphalt-6c6.notion.site/Gazebo-Scout-mini-add-lidar-086c23578e904467864f284ad02c8564
 
-hokuyo.dae : https://github.com/osrf/gazebo_models/tree/master/hokuyo/meshes
+* hokuyo.dae : https://github.com/osrf/gazebo_models/tree/master/hokuyo/meshes
 
----
+
 ### Add realsense camera
-Reference
+#### Reference
 
-https://github.com/pal-robotics/realsense_gazebo_plugin
+* https://github.com/pal-robotics/realsense_gazebo_plugin
 
-https://github.com/pal-robotics/realsense_gazebo_plugin/issues/7
+* https://github.com/pal-robotics/realsense_gazebo_plugin/issues/7
 
-https://github.com/IntelRealSense/realsense-ros
+* https://github.com/IntelRealSense/realsense-ros
 
-urdf : https://github.com/IntelRealSense/realsense-ros/tree/development/realsense2_description/urdf
+* urdf : https://github.com/IntelRealSense/realsense-ros/tree/development/realsense2_description/urdf
 
-d435.dae : https://github.com/IntelRealSense/realsense-ros/tree/development/realsense2_description/meshes
+* d435.dae : https://github.com/IntelRealSense/realsense-ros/tree/development/realsense2_description/meshes
 
 ---
 
