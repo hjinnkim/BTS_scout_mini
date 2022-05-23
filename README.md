@@ -152,7 +152,7 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 * hokuyo.dae : https://github.com/osrf/gazebo_models/tree/master/hokuyo/meshes
 
 #### How to change lidar range
-* You can change lidar range by editing parameters in **ugv_gazebo_sim/scout/scout_description/urdf/scout_mini.gazebo**
+* You can change lidar range by editing parameters in **ugv_gazebo_sim/scout/scout_description/urdf/mini.xacro**
 
     ![img](images/lidar_range.png)
 
@@ -176,10 +176,23 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
     ```
     sudo apt install ros-<distribution>-image-transport-plugins ros-<distribution>-compressed-image-transport ros-<distribution>-theora-image-transport ros-<distribution>-compressed-depth-image-transport
     ```
-### How to change lidar, camera attachment point?
-* You can change sensor attachment point by editing parameters in **ugv_gazebo_sim/scout/scout_description/urdf/mini.xacro**
-    ![img](images/sensor_attachment.png)
+
+### Add IMU sensor
+#### Reference
+
+https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#IMU(GazeboRosImu)
+
+https://answers.ros.org/question/12430/modelling-sensorsimu-in-gazebo/
+
+### How to change sensor position?
+* You can change sensor position by editing parameters in **ugv_gazebo_sim/scout/scout_description/urdf/mini.xacro**
+    ![img](images/lidar_position.png)
+
+    ![img](images/realsense_position.png)
+    
+    ![img](images/imu_position.png)
     
     By editing **xyz** parameters in < origin >, You can change sensor attachment point.
+
 ---
 
