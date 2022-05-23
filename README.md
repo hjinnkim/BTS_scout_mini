@@ -8,7 +8,7 @@
 ### 1.   [Environment](#1-environment)
 ### 2.   [Dependencies](#2-download-and-install-required-function-package)
 ### 3.   [How to download this package](#3-about-usage)
-### 4.   [Sensors](#4-sensors-1)
+### 4.   [Sensors](#4-sensors)
 ---
 
 ## **0.   Install the Gazebo software**
