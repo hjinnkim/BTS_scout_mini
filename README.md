@@ -1,16 +1,6 @@
 # **BTS project**
 # Implementation of Autonomous Driving System with AgileX Scout-mini gazebo simulator
 
-## For Detailed Simulation Function Package, Refer ugv_gazebo_sim/scout/README.md
----
-## **Table of Contents**
-### [Gazebo Installation](#0-install-the-gazebo-software)
-### [Environment](#1-environment)
-### [Dependencies](#2-download-and-install-required-function-package)
-### [How to download this package](#3-about-usage)
-### [Sensors](#4-sensors)
----
-
 ## **0.   Install the Gazebo software**
 
 Gazebo is  a simulator. Gazebo simulates multiple robots in a 3D environment, with extensive dynamic interaction between objects.
