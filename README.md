@@ -5,10 +5,10 @@
 ---
 ## **Table of Contents**
 ### 0.   [Gazebo Installation](#0-install-the-gazebo-software)
-### 1.   [Environment](#1-environment)
+### 1.   [Environment](#1-environment-1)
 ### 2.   [Dependencies](#2-download-and-install-required-function-package)
 ### 3.   [How to download this package](#3-about-usage)
-### 4.   [Sensors](#4-sensors)
+### 4.   [Sensors](#4-sensors-1)
 ---
 
 ## **0.   Install the Gazebo software**
