@@ -200,6 +200,7 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ### How to change lidar, camera attachment point?
 * You can change sensor attachment point by editing parameters in **ugv_gazebo_sim/scout/scout_description/urdf/mini.xacro**
     ![img](images/sensor_attachment.png)
+    
     By editing **xyz** parameters in < origin >, You can change sensor attachment point.
 ---
 
