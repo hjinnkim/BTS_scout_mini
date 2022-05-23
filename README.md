@@ -1,9 +1,17 @@
-# BTS project
+# **BTS project**
 # Implementation of Autonomous Driving System with AgileX Scout-mini gazebo simulator
 
-## For Detailed Simulation Function Package, Refer ugv_gazebo_sim/scout
+## For Detailed Simulation Function Package, Refer ugv_gazebo_sim/scout/README.md
 ---
-## Install the Gazebo software
+## **Table of Contents**
+## 0.   [Gazebo Installation](#0-install-the-gazebo-software)
+## 1.   [Environment](#1-environment)
+## 2.   [Dependencies](#2-download-and-install-required-function-package)
+## 3.   [How to download this package](#3-about-usage)
+## 4.   [Sensors](#4-sensors-1)
+---
+
+## **0.   Install the Gazebo software**
 
 Gazebo is  a simulator. Gazebo simulates multiple robots in a 3D environment, with extensive dynamic interaction between objects.
 
@@ -13,7 +21,7 @@ Download and install gazebo you can go to the website :http://gazebosim.org/inst
 
 ------
 
-## 	1.  Environment
+## 	**1.  Environment**
 
 <!-- ### Development Environment
 
@@ -24,23 +32,23 @@ Download and install gazebo you can go to the website :http://gazebosim.org/inst
 ​	ubuntu 20.04 + [ROS Noetic desktop full](http://wiki.ros.org/noetic/Installation/Ubuntu)
 
 
-## 2.   Download and install required function package
+## **2.   Download and install required function package**
 
-### For detailed description for installed packages, refer ugv_gazebo_sim/scout
+### *For detailed description for installed packages, refer ugv_gazebo_sim/scout/README.md*
 
 1. ROS melodic
 
-```
-sudo apt-get install ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard 
-```
+    ```
+    sudo apt-get install ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard 
+    ```
 
 2. ROS noetic
 
-```
-sudo apt-get install ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-gazebo-ros ros-noetic-gazebo-ros-control ros-noetic-joint-state-publisher-gui ros-noetic-teleop-twist-keyboard 
-```
+    ```
+    sudo apt-get install ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-gazebo-ros ros-noetic-gazebo-ros-control ros-noetic-joint-state-publisher-gui ros-noetic-teleop-twist-keyboard 
+    ```
 
-## 3.	About Usage
+## **3.	About Usage**
 
 ### 1.	Create workspace, download simulation model function package and compile
 
@@ -162,7 +170,7 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 
 ---
-## 4.   Sensors
+## **4.   Sensors**
 ### Add LiDAR
 #### Reference
 
@@ -174,6 +182,12 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 
 * hokuyo.dae : https://github.com/osrf/gazebo_models/tree/master/hokuyo/meshes
 
+#### How to change lidar range
+* You can change lidar range by editing parameters in **ugv_gazebo_sim/scout/scout_description/urdf/scout_mini.gazebo**
+
+    ![img](images/lidar_range.png)
+
+    By editing parameters in min, max part, you can change lidar range
 
 ### Add realsense camera
 #### Reference
@@ -188,10 +202,14 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 
 * d435.dae : https://github.com/IntelRealSense/realsense-ros/tree/development/realsense2_description/meshes
 
-#### If compressed image topics are not published, try to install following ros packages where '<'distribution'>' is your ros-distro
-```
-sudo apt install ros-<distribution>-image-transport-plugins ros-<distribution>-compressed-image-transport ros-<distribution>-theora-image-transport ros-<distribution>-compressed-depth-image-transport
-```
-
+#### If compressed image topics are not published
+* try to install following ros packages where < distribution> is your ros-distro
+    ```
+    sudo apt install ros-<distribution>-image-transport-plugins ros-<distribution>-compressed-image-transport ros-<distribution>-theora-image-transport ros-<distribution>-compressed-depth-image-transport
+    ```
+### How to change lidar, camera attachment point?
+* You can change sensor attachment point by editing parameters in **ugv_gazebo_sim/scout/scout_description/urdf/mini.xacro**
+    ![img](images/sensor_attachment.png)
+    By editing **xyz** parameters in < origin >, You can change sensor attachment point.
 ---
 
