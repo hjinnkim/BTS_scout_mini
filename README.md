@@ -186,6 +186,7 @@ https://answers.ros.org/question/12430/modelling-sensorsimu-in-gazebo/
 
 ### How to change sensor position?
 * You can change sensor position by editing parameters in **ugv_gazebo_sim/scout/scout_description/urdf/mini.xacro**
+
     ![img](images/lidar_position.png)
 
     ![img](images/realsense_position.png)
