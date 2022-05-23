@@ -1,7 +1,5 @@
-[TOC]
-
 # BTS project
-# Implementing Autonomous Driving System with AgileX Scout-mini
+# Implementation of Autonomous Driving System with AgileX Scout-mini gazebo simulator
 
 ## For Detailed Simulation Function Package, Refer ugv_gazebo_sim/scout
 ---
