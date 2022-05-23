@@ -188,5 +188,10 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 
 * d435.dae : https://github.com/IntelRealSense/realsense-ros/tree/development/realsense2_description/meshes
 
+#### If compressed image topics are not published, try to install following ros packages where '<'distribution'>' is your ros-distro
+```
+sudo apt install ros-<distribution>-image-transport-plugins ros-<distribution>-compressed-image-transport ros-<distribution>-theora-image-transport ros-<distribution>-compressed-depth-image-transport
+```
+
 ---
 
