@@ -105,13 +105,6 @@ cd scout_ws
 source devel/setup.bash
 ```
 
-​	Run the start file of scout_v2 model and visualize the model in Rviz
-
-```
-roslaunch scout_description display_scout_v2.launch 
-```
-
-
 ​	Run the start file of scout_mini model and visualize the model in Rviz
 
 ```
@@ -132,20 +125,6 @@ cd scout_ws
 ```
 source devel/setup.bash
 ```
-
-​	Start the simulation environment of scout_v2
-
-```
-roslaunch scout_gazebo_sim scout_empty_world.launch
-```
-
-
-#Control by keyboard, the scout2.0 and scout_mini can be controlled to move forward, left, right and backward through "i", "j", "l",and "," on the keyboard
-
-```
-rosrun teleop_twist_keyboard teleop_twist_keyboard.py 
-```
-
 
 ​	Start the simulation environment of scout_mini
 
