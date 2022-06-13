@@ -4,6 +4,3 @@
 [submodule "scout_ros"]
 	path = scout_ros
 	url = https://github.com/agilexrobotics/scout_ros.git
-[submodule "ugv_sdk"]
-	path = ugv_sdk
-	url = https://github.com/agilexrobotics/ugv_sdk.git
