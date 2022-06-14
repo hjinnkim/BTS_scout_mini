@@ -1,9 +1,3 @@
 [submodule "ugv_gazebo_sim"]
 	path = ugv_gazebo_sim
 	url = https://github.com/hjinnkim/ugv_gazebo_sim.git
-[submodule "ugv_sdk"]
-	path = ugv_sdk
-	url = https://github.com/agilexrobotics/ugv_sdk.git
-[submodule "scout_ros"]
-	path = scout_ros
-	url = https://github.com/hjinnkim/scout_ros.git
