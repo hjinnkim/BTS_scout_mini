@@ -29,13 +29,13 @@ Download and install gazebo you can go to the website :http://gazebosim.org/inst
 1. ROS melodic
 
     ```
-    sudo apt-get install libasio-dev ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard 
+    sudo apt-get install libasio-dev ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard ros-noetic-navigation ros-noetic-gmapping
     ```
 
 2. ROS noetic
 
     ```
-    sudo apt-get install libasio-dev ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-gazebo-ros ros-noetic-gazebo-ros-control ros-noetic-joint-state-publisher-gui ros-noetic-teleop-twist-keyboard 
+    sudo apt-get install libasio-dev ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-gazebo-ros ros-noetic-gazebo-ros-control ros-noetic-joint-state-publisher-gui ros-noetic-teleop-twist-keyboard ros-noetic-navigation ros-noetic-gmapping
     ```
 
 ## **3.	About Usage**
@@ -51,19 +51,7 @@ mkdir -p scout_ws/src
 ​		Enter the scout_ws folder
 
 ```
-cd scout_ws
-```
-
-​		Initialize workspace
-
-```
-catkin_make
-```
-
-​		Enter the src folder
-
-```
-cd src
+cd ~/scout_ws/src
 ```
 
 ​		Download simulation model function package
@@ -75,7 +63,7 @@ git clone --recursive https://github.com/hjinnkim/BTS_scout_mini.git
 ​		Enter the scout_ws folder
 
 ```
-cd scout_ws
+cd ~/scout_ws
 ```
 
 ​		Confirm whether the dependency of the function package is installed
@@ -132,68 +120,27 @@ source devel/setup.bash
 roslaunch scout_gazebo_sim scout_mini_playpen.launch
 ```
 
-#Control by keyboard, the scout2.0 and scout_mini can be controlled to move forward, left, right and backward through "i", "j", "l",and "," on the keyboard
+#Control by keyboard, the scout_mini can be controlled to move forward, left, right and backward through "w", "a", "s" and "d" on the keyboard
 
 ```
-rosrun teleop_twist_keyboard teleop_twist_keyboard.py 
+roslaunch scout_teleop scout_teleop_key.launch 
 ```
 
 ---
-## **4.   Sensors**
-### Add LiDAR
-#### Reference
 
-* https://www.youtube.com/watch?v=jJzzw2jk-lY
+### 4.	Start the gazebo simulation environment of scout_mini and gmapping in the gazebo
 
-* https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#GPULaser
+​	Start the simulation environment of scout_mini
 
-* https://level-asphalt-6c6.notion.site/Gazebo-Scout-mini-add-lidar-086c23578e904467864f284ad02c8564
+```
+roslaunch scout_slam scout_slam.launch
+```
 
-* hokuyo.dae : https://github.com/osrf/gazebo_models/tree/master/hokuyo/meshes
+### 5.	Start the gazebo simulation environment of scout_mini and navigation in the gazebo
 
-#### How to change lidar range
-* You can change lidar range by editing parameters in **ugv_gazebo_sim/scout/scout_description/urdf/mini.xacro**
+​	Start the simulation environment of scout_mini
 
-    ![img](images/lidar_range.png)
-
-    By editing parameters in min, max part, you can change lidar range
-
-### Add realsense camera
-#### Reference
-
-* https://github.com/pal-robotics/realsense_gazebo_plugin
-
-* https://github.com/pal-robotics/realsense_gazebo_plugin/issues/7
-
-* https://github.com/IntelRealSense/realsense-ros
-
-* urdf : https://github.com/IntelRealSense/realsense-ros/tree/development/realsense2_description/urdf
-
-* d435.dae : https://github.com/IntelRealSense/realsense-ros/tree/development/realsense2_description/meshes
-
-#### If compressed image topics are not published
-* try to install following ros packages where < distribution> is your ros-distro
-    ```
-    sudo apt install ros-<distribution>-image-transport-plugins ros-<distribution>-compressed-image-transport ros-<distribution>-theora-image-transport ros-<distribution>-compressed-depth-image-transport
-    ```
-
-### Add IMU sensor
-#### Reference
-
-https://classic.gazebosim.org/tutorials?tut=ros_gzplugins#IMU(GazeboRosImu)
-
-https://answers.ros.org/question/12430/modelling-sensorsimu-in-gazebo/
-
-### How to change sensor position?
-* You can change sensor position by editing parameters in **ugv_gazebo_sim/scout/scout_description/urdf/mini.xacro**
-
-    ![img](images/lidar_position.png)
-
-    ![img](images/realsense_position.png)
-    
-    ![img](images/imu_position.png)
-    
-    By editing **xyz** parameters in < origin >, You can change sensor attachment point.
-
----
+```
+roslaunch scout_navigation scout_navigation.launch
+```
 

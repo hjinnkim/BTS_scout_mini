@@ -1,1 +1,4 @@
-/.vscode
+/.vscode/
+/**/.vscode/
+/scout_bringup/scout_slam/maps/*.pgm
+/scout_bringup/scout_slam/maps/*.yaml
