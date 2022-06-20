@@ -29,7 +29,7 @@ Download and install gazebo you can go to the website :http://gazebosim.org/inst
 1. ROS melodic
 
     ```
-    sudo apt-get install libasio-dev ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard ros-noetic-navigation ros-noetic-gmapping
+    sudo apt-get install libasio-dev ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard ros-melodic-navigation ros-melodic-gmapping
     ```
 
 2. ROS noetic
