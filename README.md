@@ -135,6 +135,12 @@ roslaunch scout_teleop scout_teleop_key.launch
 ```
 roslaunch scout_slam scout_slam.launch
 ```
+​	You can save the map you created by
+
+```
+roslaunch scout_slam gmapping_save.launch
+```
+
 
 ### 5.	Start the gazebo simulation environment of scout_mini and navigation in the gazebo
 
