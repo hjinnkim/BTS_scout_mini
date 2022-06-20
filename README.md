@@ -45,7 +45,7 @@ Download and install gazebo you can go to the website :http://gazebosim.org/inst
 ​		Open a new terminal and create a workspace named scout_ws, enter in the terminal:
 
 ```
-mkdir -p scout_ws/src
+mkdir -p ~/scout_ws/src
 ```
 
 ​		Enter the scout_ws folder
