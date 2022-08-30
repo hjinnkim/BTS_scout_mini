@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Install package scout-gazebo simulation dependencies
+sudo apt-get install libasio-dev ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-gazebo-ros ros-noetic-gazebo-ros-control ros-noetic-joint-state-publisher-gui ros-noetic-teleop-twist-keyboard 
+
+# Next package build 
+# ros-noetic-navigation
+
 # slam-gmapping package download
 # Reference site : https://aur.archlinux.org/packages/ros-noetic-slam-gmapping
 # Reference site : https://aur.archlinux.org/packages/ros-noetic-openslam-gmapping
