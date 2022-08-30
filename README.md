@@ -57,7 +57,7 @@ cd ~/scout_ws/src
 ​		Download simulation model function package
 
 ```
-git clone --recursive https://github.com/hjinnkim/BTS_scout_mini.git
+git clone --recurse-submodules https://github.com/hjinnkim/BTS_scout_mini.git
 ```
 
 ​		Enter the scout_ws folder
