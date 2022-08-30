@@ -2,3 +2,9 @@
 /**/.vscode/
 /scout_bringup/scout_slam/maps/*.pgm
 /scout_bringup/scout_slam/maps/*.yaml
+
+
+/scout_bringup/openslam_gmapping-0.2.1
+/scout_bringup/slam_gmapping-1.4.1
+/scout_bringup/openslam_gmapping-0.2.1.tar.gz
+/scout_bringup/slam_gmapping-1.4.1.tar.gz
