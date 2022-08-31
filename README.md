@@ -1,157 +1,98 @@
 # **BTS project**
-# Implementation of Autonomous Driving System with AgileX Scout-mini gazebo simulator
+---
+## Implementation of Autonomous Driving System with AgileX SCOUT-mini gazebo simulator
 
-## **0.   Install the Gazebo software**
+### **0. Install the Gazebo software**
 
-Gazebo is  a simulator. Gazebo simulates multiple robots in a 3D environment, with extensive dynamic interaction between objects.
+Gazebo is a robot simulator. Gazebo simulates multiple robots in a 3D environments, with extensive dynamic interaction between objects.
 
-[http://gazebosim.org](http://gazebosim.org/)
+**Gazebo Download Link** : [http://gazebosim.org](http://gazebosim.org/)
 
-Download and install gazebo you can go to the website :http://gazebosim.org/install
+Download and install gazebo. You can go to the website : http://gazebosim.org/install
 
-------
+### **1. Installation**
 
-## 	**1.  Environment**
+1. **development Environment ubuntu 20.04 + [ROS Noetic desktop full](http://wiki.ros.org/noetic/Installation/Ubuntu)**
 
-<!-- ### Development Environment
+2. **Build ROS packages for Scout simulator**
+        
+    * Create worksapce, download ROS packages
+    ```
+    mkdir -p ~/scout_ws/src
+    cd ~/scout_ws/src
+    git clone --recurse-submodules https://github.com/hjinnkim/BTS_scout_mini.git
+    ```
 
-​	ubuntu 18.04 + [ROS Melodic desktop full](http://wiki.ros.org/melodic/Installation/Ubuntu) -->
+3.  **Install required ROS packages**
+    
+    a. Noetic
+    ```(dependencies) and build from source
+    cd BTS_scout_mini
+    sh install_dependencies_noetic.sh
+    ```
 
-### Development Environment
-
-​	ubuntu 20.04 + [ROS Noetic desktop full](http://wiki.ros.org/noetic/Installation/Ubuntu)
-
-
-## **2.   Download and install required function package**
-
-### *For detailed description for installed packages, refer ugv_gazebo_sim/scout/README.md*
-
-1. ROS melodic
-
+    b. Melodic
     ```
     sudo apt-get install libasio-dev ros-melodic-ros-control ros-melodic-ros-controllers ros-melodic-gazebo-ros ros-melodic-gazebo-ros-control ros-melodic-joint-state-publisher-gui ros-melodic-teleop-twist-keyboard ros-melodic-navigation ros-melodic-gmapping
     ```
 
-2. ROS noetic
-
+4. **Install dependencies and build**
     ```
-    sudo apt-get install libasio-dev ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-gazebo-ros ros-noetic-gazebo-ros-control ros-noetic-joint-state-publisher-gui ros-noetic-teleop-twist-keyboard ros-noetic-navigation ros-noetic-gmapping
+    cd ~/scout_ws
+    rosdep install --from-paths src --ignore-src -r -y
+    catkin_make
 
-    or
-
-    // In BTS repository
-    sh install_dependencies_noetic.sh
+### **2. Usage**
+1. **SCOUT-mini description**
+    ```
+    cd ~/scout_ws
+    source devel/setup.bash
+    roslaunch scout_description display_scout_mini.launch 
     ```
 
-## **3.	About Usage**
+2. **Launch gazebo simulator and teleop control**
+    
+    a. Launch gazebo simulator
+    ```
+    cd ~/scout_ws
+    source devel/setup.bash
+    roslaunch scout_gazebo_sim scout_mini_playpen.launch
+    ```
 
-### 1.	Create workspace, download simulation model function package and compile
+    b. Run teleop controller (w, a, s, d)
+        
+    ```
+    //Open another terminal
 
-​		Open a new terminal and create a workspace named scout_ws, enter in the terminal:
+    cd ~/scout_ws
+    roslaunch scout_teleop scout_teleop_key.launch 
+    ```
 
-```
-mkdir -p ~/scout_ws/src
-```
+### **3. 2D Navigation**
+1. **SLAM mapping**
+    
+    a. Gmapping
+    ```
+    // Run gmapping slam
 
-​		Enter the scout_ws folder
+    roslaunch scout_slam scout_slam.launch
+    ```
+    ```
+    // Save map (Another terminal)
 
-```
-cd ~/scout_ws/src
-```
+    roslaunch scout_slam gmapping_save.launch
+    ```
 
-​		Download simulation model function package
+    b. Cartographer
+    
+    To be added
 
-```
-git clone --recurse-submodules https://github.com/hjinnkim/BTS_scout_mini.git
-```
+2. **Navigation**
+    ```
+    // Run navigation
 
-​		Enter the scout_ws folder
+    roslaunch scout_navigation scout_navigation.launch
+    ```
 
-```
-cd ~/scout_ws
-```
-
-​		Confirm whether the dependency of the function package is installed
-```
-rosdep install --from-paths src --ignore-src -r -y 
-```
-
-​		Compile
-
-```
-catkin_make
-```
-
-
-
-### 2.	Run the star file of scout_v2 and scout_mini, and visualize the urdf file in Rviz
-
-​	Enter the scout_ws folder
-
-```
-cd scout_ws
-```
-
-​	Declare the environment variable
-
-```
-source devel/setup.bash
-```
-
-​	Run the start file of scout_mini model and visualize the model in Rviz
-
-```
-roslaunch scout_description display_scout_mini.launch 
-```
- 
-
-### 3.	Start the gazebo simulation environment of scout_v2 and scout_mini and control scout_v2 and scout_mini movement in the gazebo
-
-​	Enter the scout_ws folder
-
-```
-cd scout_ws
-```
-
-​	Declare the environment variable
-
-```
-source devel/setup.bash
-```
-
-​	Start the simulation environment of scout_mini
-
-```
-roslaunch scout_gazebo_sim scout_mini_playpen.launch
-```
-
-#Control by keyboard, the scout_mini can be controlled to move forward, left, right and backward through "w", "a", "s" and "d" on the keyboard
-
-```
-roslaunch scout_teleop scout_teleop_key.launch 
-```
-
----
-
-### 4.	Start the gazebo simulation environment of scout_mini and gmapping in the gazebo
-
-​	Start the simulation environment of scout_mini
-
-```
-roslaunch scout_slam scout_slam.launch
-```
-​	You can save the map you created by
-
-```
-roslaunch scout_slam gmapping_save.launch
-```
-
-
-### 5.	Start the gazebo simulation environment of scout_mini and navigation in the gazebo
-
-​	Start the simulation environment of scout_mini
-
-```
-roslaunch scout_navigation scout_navigation.launch
-```
-
+### ** 4. 3D navigation**
+To be added
