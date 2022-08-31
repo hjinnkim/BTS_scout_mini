@@ -36,6 +36,11 @@ Download and install gazebo you can go to the website :http://gazebosim.org/inst
 
     ```
     sudo apt-get install libasio-dev ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-gazebo-ros ros-noetic-gazebo-ros-control ros-noetic-joint-state-publisher-gui ros-noetic-teleop-twist-keyboard ros-noetic-navigation ros-noetic-gmapping
+
+    or
+
+    // In BTS repository
+    sh install_dependencies_noetic.sh
     ```
 
 ## **3.	About Usage**
