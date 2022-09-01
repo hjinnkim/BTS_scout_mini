@@ -35,10 +35,10 @@ if os.name == 'nt':
 else:
   import tty, termios
 
-Scout_MAX_LIN_VEL = 1.0
+Scout_MAX_LIN_VEL = 5.0
 Scout_MAX_ANG_VEL = 2.0
 
-LIN_VEL_STEP_SIZE = 0.1
+LIN_VEL_STEP_SIZE = 0.2
 ANG_VEL_STEP_SIZE = 0.1
 
 msg = """
@@ -49,7 +49,7 @@ Moving around:
    a    s    d
         x
 
-w/x : increase/decrease linear velocity (Scout : ~ 1.0)
+w/x : increase/decrease linear velocity (Scout : ~ 5.0)
 a/d : increase/decrease angular velocity (Scout : ~ 2.0)
 
 space key, s : force stop
