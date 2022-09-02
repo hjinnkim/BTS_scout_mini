@@ -1,0 +1,23 @@
+<launch>
+    <arg name="odom_topic_name" default="odom" />
+    <arg name="odom_groundtruth_topic_name" default="odom_groundtruth" />
+    <arg name="pub_tf" default="true" />
+    <arg name="base_frame" default="base_link" />
+    <arg name="odom_frame" default="odom" />
+    <arg name="add_noise" default="true" />
+
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+
+    <node name="odom_converter_node" pkg="scout_odom" type="odom_converter_node" output="screen" required="true" args="-x $(arg x) -y $(arg y) -z $(arg z) -yaw $(arg yaw)" >
+        <param name="odom_frame" type="string" value="$(arg odom_frame)" />
+        <param name="base_frame" type="string" value="$(arg base_frame)" />
+        <param name="odom_topic_name" type="string" value="$(arg odom_topic_name)" />
+        <param name="odom_groundtruth_topic_name" type="string" value="$(arg odom_groundtruth_topic_name)" />
+        <param name="pub_tf" type="bool" value="$(arg pub_tf)" />
+        <param name="add_noise" type="bool" value="$(arg pub_tf)" />
+    </node>
+
+</launch>
