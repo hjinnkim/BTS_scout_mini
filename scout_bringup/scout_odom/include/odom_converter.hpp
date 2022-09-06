@@ -42,9 +42,9 @@ class OdomConverter{
         tf2::Quaternion initial_quat_;
 
         double linear_covariance_[2];
-        double angular_covariance_[3];
+        double angular_covariance_;
         double linear_error_accumulate_[2] = {0};
-        double orientation_error_accumulate_[3] = {0};
+        double angular_error_accumulate_ = 0;
         
 };
 

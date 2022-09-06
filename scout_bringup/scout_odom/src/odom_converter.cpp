@@ -1,6 +1,8 @@
 #include "odom_converter.hpp"
 // #include <tf/transform_broadcaster.h>
 
+#include <tf/tf.h>
+
 #include <random>
 
 double add_gaussian_noise(const double& variance_, const double& mean_ = 0){
@@ -31,10 +33,8 @@ OdomConverter::OdomConverter(ros::NodeHandle *nh, double initial_x, double initi
 
 void OdomConverter::SetupSubscription(){
     odom_publisher_ = nh_->advertise<nav_msgs::Odometry>(odom_topic_name_, 50);
-    odom_subscriber_= nh_->subscribe<nav_msgs::Odometry>(odom_groundtruth_topic_name_, 5, &OdomConverter::OdomCallback, this);
+    odom_subscriber_= nh_->subscribe<nav_msgs::Odometry>(odom_groundtruth_topic_name_, 1, &OdomConverter::OdomCallback, this);
     odom_init_ = false;
-
-    initial_quat_.setRPY(0., 0., initial_yaw_);
 }
 
 void OdomConverter::OdomCallback(const nav_msgs::Odometry::ConstPtr& msg){
@@ -44,9 +44,11 @@ void OdomConverter::OdomCallback(const nav_msgs::Odometry::ConstPtr& msg){
         linear_covariance_[0] = odom_groudtruth_.pose.covariance[0];
         linear_covariance_[1] = odom_groudtruth_.pose.covariance[7];
         // linear_covariance_[2] = odom_groudtruth_.pose.covariance[14];
-        angular_covariance_[0] = odom_groudtruth_.pose.covariance[21];
-        angular_covariance_[1] = odom_groudtruth_.pose.covariance[28];
-        angular_covariance_[2] = odom_groudtruth_.pose.covariance[35];
+
+        angular_covariance_ = odom_groudtruth_.pose.covariance[35];
+        // angular_covariance_[0] = odom_groudtruth_.pose.covariance[21];
+        // angular_covariance_[1] = odom_groudtruth_.pose.covariance[28];
+        // angular_covariance_[2] = odom_groudtruth_.pose.covariance[35];
         odom_init_ = true;
         return;
     }
@@ -56,17 +58,20 @@ void OdomConverter::PublishOdometry(){
     std::lock_guard<std::mutex> guard(odom_mutex_);
     if(!odom_init_) return;
 
-    ros::Time current_time = ros::Time::now();
-
     if(add_noise){
-        linear_error_accumulate_[0] += add_gaussian_noise(linear_covariance_[0]);
-        linear_error_accumulate_[1] += add_gaussian_noise(linear_covariance_[1]);
-
-        tf2::Quaternion orientation_error = add_gaussian_noise_quat(angular_covariance_);
-        orientation_error_accumulate_[0] += orientation_error.getX();
-        orientation_error_accumulate_[1] += orientation_error.getY();
-        orientation_error_accumulate_[2] += orientation_error.getZ();
+        linear_error_accumulate_[0] += 0.1*add_gaussian_noise(linear_covariance_[0]);
+        linear_error_accumulate_[1] += 0.1*add_gaussian_noise(linear_covariance_[1]);
+        angular_error_accumulate_ += 0.1*add_gaussian_noise(angular_covariance_);
     }
+    
+    tf::Quaternion q(odom_groudtruth_.pose.pose.orientation.x, odom_groudtruth_.pose.pose.orientation.y, odom_groudtruth_.pose.pose.orientation.z, odom_groudtruth_.pose.pose.orientation.w);
+
+    tf::Matrix3x3 m(q);
+    double roll, pitch, yaw;
+    m.getRPY(roll, pitch, yaw);
+    q.setRPY(roll, pitch, yaw + angular_error_accumulate_ - initial_yaw_);
+
+    ros::Time current_time = ros::Time::now();
 
     nav_msgs::Odometry odom_msg(odom_groudtruth_);
     odom_msg.header.stamp = current_time;
@@ -76,14 +81,16 @@ void OdomConverter::PublishOdometry(){
     odom_msg.pose.pose.position.x += (linear_error_accumulate_[0] - initial_x_);
     odom_msg.pose.pose.position.y += (linear_error_accumulate_[1] - initial_y_);
 
-    odom_msg.pose.pose.orientation.x += (orientation_error_accumulate_[0] - initial_quat_.getX());
-    odom_msg.pose.pose.orientation.y += (orientation_error_accumulate_[1] - initial_quat_.getY());
-    odom_msg.pose.pose.orientation.z += (orientation_error_accumulate_[2] - initial_quat_.getZ());
+    odom_msg.pose.pose.orientation.x = q.getX();
+    odom_msg.pose.pose.orientation.y = q.getY();
+    odom_msg.pose.pose.orientation.z = q.getZ();
+    odom_msg.pose.pose.orientation.w = q.getW();
 
     if(pub_tf){
         geometry_msgs::TransformStamped tf_msg;
         tf_msg.header = odom_msg.header;
         tf_msg.child_frame_id = base_frame_;
+        
 
         tf_msg.transform.translation.x = odom_msg.pose.pose.position.x;
         tf_msg.transform.translation.y = odom_msg.pose.pose.position.y;

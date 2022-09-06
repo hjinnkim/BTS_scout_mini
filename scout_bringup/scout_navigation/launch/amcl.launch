@@ -1,8 +1,8 @@
 <launch>
     <!-- Arguments -->
     <arg name="scan_topic"                default="scan"/>
-    <arg name="initial_pose_x"            default="0.0" />
-    <arg name="initial_pose_y"            default="0.0" />
+    <arg name="initial_pose_x"            default="5.0" />
+    <arg name="initial_pose_y"            default="5.0" />
     <arg name="initial_pose_a"            default="0.0" />
 
     <arg name="odom_model_type"           default="diff"/>
@@ -32,13 +32,13 @@
         <remap from="scan"                      to="$(arg scan_topic)"/>
         <param name="laser_max_range"           value="10.0"/>
         <param name="laser_max_beams"           value="180"/>
-        <param name="laser_z_hit"               value="0.5"/>
+        <param name="laser_z_hit"               value="0.9"/>
         <param name="laser_z_short"             value="0.05"/>
         <param name="laser_z_max"               value="0.05"/>
         <param name="laser_z_rand"              value="0.5"/>
         <param name="laser_sigma_hit"           value="0.2"/>
         <param name="laser_lambda_short"        value="0.1"/>
-        <param name="laser_likelihood_max_dist" value="2.0"/>
+        <param name="laser_likelihood_max_dist" value="4.0"/>
         <param name="laser_model_type"          value="likelihood_field"/>
 
         <param name="odom_model_type"           value="$(arg odom_model_type)"/>

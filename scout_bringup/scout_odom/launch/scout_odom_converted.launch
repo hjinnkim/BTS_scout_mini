@@ -4,7 +4,7 @@
     <arg name="pub_tf" default="true" />
     <arg name="base_frame" default="base_link" />
     <arg name="odom_frame" default="odom" />
-    <arg name="add_noise" default="true" />
+    <arg name="add_noise" default="false" />
 
     <arg name="x" default="0.0"/>
     <arg name="y" default="0.0"/>

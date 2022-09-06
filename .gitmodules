@@ -2,3 +2,6 @@
 	path = ugv_gazebo_sim
 	url = https://github.com/hjinnkim/ugv_gazebo_sim.git
 	branch = bts-devel
+[submodule "gazebo_models_worlds_collection"]
+	path = gazebo_models_worlds_collection
+	url = https://github.com/chaolmu/gazebo_models_worlds_collection.git
