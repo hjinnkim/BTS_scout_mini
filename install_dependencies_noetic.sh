@@ -22,4 +22,7 @@ cd ..
 # Reference site : http://wiki.ros.org/navigation
 # Reference site : https://github.com/ros-planning/navigation
 
-git clone https://github.com/ros-planning/navigation.git
+git clone -b noetic-devel https://github.com/ros-planning/navigation.git 
+
+# To use gazebo_models_worlds_collection
+echo "$(pwd)/ugv_gazebo_sim/gazebo_models_worlds_collection/models" >> ~/.bashrc
