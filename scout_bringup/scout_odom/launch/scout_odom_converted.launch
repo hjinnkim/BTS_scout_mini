@@ -1,5 +1,5 @@
 <launch>
-    <arg name="odom_topic_name" default="odom" />
+    <arg name="odom_topic_name" default="odom_cmd" />
     <arg name="odom_groundtruth_topic_name" default="odom_groundtruth" />
     <arg name="pub_tf" default="true" />
     <arg name="base_frame" default="base_link" />

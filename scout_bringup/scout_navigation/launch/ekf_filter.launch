@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+        <rosparam command="load" file="$(find scout_navigation)/param/ekf_filter.yaml"/>
+    </node>
+</launch>
