@@ -14,12 +14,12 @@
     <arg name="odom_alpha2"               default="0.2"/>
     <arg name="odom_alpha3"               default="0.2"/>
     <arg name="odom_alpha4"               default="0.2"/>
-    <arg name="odom_frame_id"             default="odom_converted"/>
+    <arg name="odom_frame_id"             default="odom_cmd"/>
     <arg name="base_frame_id"             default="base_footprint"/>
 
     <!-- move_base parameters -->
     <arg name="move_forward_only"         default="true" />
-    <arg name="odom_topic"                default="odom_converted" />
+    <arg name="odom_topic"                default="odom_cmd" />
     
     <!-- Map server -->
     <node pkg="map_server" name="map_server" type="map_server" args="$(find scout_slam)/maps/$(arg map_file)" />

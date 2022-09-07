@@ -1,5 +1,5 @@
 local_costmap:
-  global_frame: odom_converted
+  global_frame: odom_cmd
   robot_base_frame: base_footprint
 
   update_frequency: 10.0
@@ -8,7 +8,10 @@ local_costmap:
 
   static_map: false  
   rolling_window: true
-  width: 10
-  height: 10
+  width: 6
+  height: 6
   resolution: 0.025
+
+  inflation_radius: 1.75
+  cost_scaling_factor: 2.58
   
