@@ -15,7 +15,7 @@
     <!-- Specifies the expected noise in odometry's translation estimate from the rotational component of the robot's motion. -->
     <arg name="odom_alpha4"               default="0.2"/>
     <arg name="odom_frame_id"             default="odom"/>
-    <arg name="base_frame_id"             default="base_link"/>
+    <arg name="base_frame_id"             default="base_footprint"/>
 
     <!-- AMCL -->
     <node pkg="amcl" type="amcl" name="amcl">
@@ -25,13 +25,13 @@
         <param name="update_min_d"              value="0.20"/>
         <param name="update_min_a"              value="0.20"/>
         <param name="resample_interval"         value="1"/>
-        <param name="transform_tolerance"       value="0.5"/>
+        <param name="transform_tolerance"       value="1.0"/>
         <param name="recovery_alpha_slow"       value="0.00"/>
         <param name="recovery_alpha_fast"       value="0.00"/>
         <param name="initial_pose_x"            value="$(arg initial_pose_x)"/>
         <param name="initial_pose_y"            value="$(arg initial_pose_y)"/>
         <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
-        <param name="gui_publish_rate"          value="50.0"/>
+        <param name="gui_publish_rate"          value="100.0"/>
 
         <remap from="scan"                      to="$(arg scan_topic)"/>
         <param name="laser_max_range"           value="10.0"/>
