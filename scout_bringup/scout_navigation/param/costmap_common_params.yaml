@@ -1,7 +1,10 @@
 obstacle_range: 6.0
 raytrace_range: 7.0
 
-footprint: [[-0.31, -0.2925], [-0.31, 0.2925], [0.31, 0.2925], [0.31, -0.2925]]
+# The height of scout_mini : 0.371
+max_obstacle_height: 0.39
+
+footprint: [[-0.32, -0.31], [-0.32, 0.31], [0.32, 0.31], [0.32, -0.31]]
 #robot_radius: 0.105
 
 inflation_radius: 1.0

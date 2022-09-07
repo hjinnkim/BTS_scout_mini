@@ -2,8 +2,8 @@
     <arg name="map_file"                  default="map1.yaml" />
     <arg name="open_rviz"                 default="true" />
     
-    <arg name="initial_pose_x"            default="5.0" />
-    <arg name="initial_pose_y"            default="5.0" />
+    <arg name="initial_pose_x"            default="0.0" />
+    <arg name="initial_pose_y"            default="0.0" />
     <arg name="initial_pose_a"            default="0.0" />
 
     <!-- AMCL parameters -->
@@ -14,13 +14,12 @@
     <arg name="odom_alpha2"               default="0.2"/>
     <arg name="odom_alpha3"               default="0.2"/>
     <arg name="odom_alpha4"               default="0.2"/>
-    <arg name="odom_frame_id"             default="odom"/>
+    <arg name="odom_frame_id"             default="odom_cmd"/>
     <arg name="base_frame_id"             default="base_footprint"/>
 
     <!-- move_base parameters -->
-    <arg name="move_forward_only"         default="false" />
-    <!-- <arg name="odom_topic"                default="odom_cmd" /> -->
-    <arg name="odom_topic"                default="odometry/filtered" />
+    <arg name="move_forward_only"         default="true" />
+    <arg name="odom_topic"                default="odom_cmd" />
     
     <!-- Map server -->
     <node pkg="map_server" name="map_server" type="map_server" args="$(find scout_slam)/maps/$(arg map_file)" />
@@ -45,9 +44,6 @@
         <arg name="move_forward_only" value="$(arg move_forward_only)" />
         <arg name="odom_topic" value="$(arg odom_topic)" />
     </include>
-
-    <!-- EKF Localization -->
-    <include file="$(find scout_navigation)/launch/ekf_filter.launch" />
 
     <!-- rviz -->
     <group if="$(arg open_rviz)">
