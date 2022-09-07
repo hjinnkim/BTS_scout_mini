@@ -33,7 +33,7 @@ DWAPlannerROS:
   # Trajectory Scoring Parameters
   path_distance_bias: 32.0 # try to follow global path
   goal_distance_bias: 20.0 # try to follow local goal (larger one makes robot less attached to global path)
-  occdist_scale: 0.3 # how much the robot should attempt to avoid obstacles, larger one makes robot in stuck near obstacle cost region
+  occdist_scale: 0.4 # how much the robot should attempt to avoid obstacles, larger one makes robot in stuck near obstacle cost region
   forward_point_distance: 0.325
   stop_time_buffer: 0.2
   scaling_speed: 0.5
