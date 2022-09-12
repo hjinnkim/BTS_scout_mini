@@ -18,11 +18,18 @@ tar -xvf ros-noetic-openslam-gmapping-0.2.1.tar.gz
 
 cd ..
 
-# navigation package download
+# ROS navigation package download
 # Reference site : http://wiki.ros.org/navigation
 # Reference site : https://github.com/ros-planning/navigation
 
-git clone -b noetic-devel https://github.com/ros-planning/navigation.git 
+git clone -b noetic-devel https://github.com/ros-planning/navigation.git
+
+# robot_localization package download
+# Reference site : http://wiki.ros.org/robot_localization
+# Reference site : https://github.com/cra-ros-pkg/robot_localization
+
+git clone -b noetic-devel https://github.com/cra-ros-pkg/robot_localization.git
 
 # To use gazebo_models_worlds_collection
-echo "$(pwd)/ugv_gazebo_sim/gazebo_models_worlds_collection/models" >> ~/.bashrc
+echo 'export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:'"$(pwd)/ugv_gazebo_sim/gazebo_models_worlds_collection/models" >> ~/.bashrc
+echo 'export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:'"$(pwd)/ugv_gazebo_sim/gazebo_models_worlds_collection/worlds" >> ~/.bashrc

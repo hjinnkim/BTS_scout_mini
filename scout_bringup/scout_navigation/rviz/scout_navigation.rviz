@@ -10,8 +10,7 @@ Panels:
         - /Global Map1/Planner1
         - /Local Map1/Polygon1
         - /Local Map1/Costmap1
-        - /Odometry1
-        - /Odometry2
+        - /Odometry1/Shape1
         - /Odometry2/Shape1
       Splitter Ratio: 0.5
     Tree Height: 719
@@ -158,20 +157,93 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        base_footprint:
+          Value: true
+        base_link:
+          Value: false
+        camera_bottom_screw_frame:
+          Value: false
+        camera_color_frame:
+          Value: false
+        camera_color_optical_frame:
+          Value: false
+        camera_depth_frame:
+          Value: false
+        camera_depth_optical_frame:
+          Value: false
+        camera_left_ir_frame:
+          Value: false
+        camera_left_ir_optical_frame:
+          Value: false
+        camera_link:
+          Value: false
+        camera_right_ir_frame:
+          Value: false
+        camera_right_ir_optical_frame:
+          Value: false
+        front_left_wheel_link:
+          Value: false
+        front_right_wheel_link:
+          Value: false
+        hokuyo_link:
+          Value: false
+        imu_link:
+          Value: false
+        inertial_link:
+          Value: false
+        map:
+          Value: true
+        odom:
+          Value: true
+        rear_left_wheel_link:
+          Value: false
+        rear_right_wheel_link:
+          Value: false
       Marker Alpha: 1
-      Marker Scale: 1
+      Marker Scale: 3
       Name: TF
       Show Arrows: true
       Show Axes: true
-      Show Names: false
+      Show Names: true
       Tree:
-        {}
+        map:
+          odom:
+            base_footprint:
+              base_link:
+                camera_bottom_screw_frame:
+                  camera_link:
+                    camera_depth_frame:
+                      camera_color_frame:
+                        camera_color_optical_frame:
+                          {}
+                      camera_depth_optical_frame:
+                        {}
+                      camera_left_ir_frame:
+                        camera_left_ir_optical_frame:
+                          {}
+                      camera_right_ir_frame:
+                        camera_right_ir_optical_frame:
+                          {}
+                front_left_wheel_link:
+                  {}
+                front_right_wheel_link:
+                  {}
+                hokuyo_link:
+                  {}
+                imu_link:
+                  {}
+                inertial_link:
+                  {}
+                rear_left_wheel_link:
+                  {}
+                rear_right_wheel_link:
+                  {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -380,7 +452,7 @@ Visualization Manager:
           Color: 204; 51; 204
           Scale: 1
           Value: true
-        Value: true
+        Value: false
       Enabled: true
       Keep: 100
       Name: Odometry
@@ -390,13 +462,13 @@ Visualization Manager:
         Alpha: 1
         Axes Length: 1
         Axes Radius: 0.10000000149011612
-        Color: 255; 25; 0
+        Color: 0; 69; 255
         Head Length: 0.30000001192092896
         Head Radius: 0.10000000149011612
         Shaft Length: 1
         Shaft Radius: 0.05000000074505806
         Value: Arrow
-      Topic: /odom_cmd
+      Topic: /odometry/filtered
       Unreliable: false
       Value: true
     - Angle Tolerance: 0.10000000149011612
@@ -415,7 +487,7 @@ Visualization Manager:
           Color: 204; 51; 204
           Scale: 1
           Value: true
-        Value: false
+        Value: true
       Enabled: true
       Keep: 100
       Name: Odometry
@@ -425,13 +497,13 @@ Visualization Manager:
         Alpha: 1
         Axes Length: 1
         Axes Radius: 0.10000000149011612
-        Color: 0; 69; 255
+        Color: 255; 25; 0
         Head Length: 0.30000001192092896
         Head Radius: 0.10000000149011612
         Shaft Length: 1
         Shaft Radius: 0.05000000074505806
         Value: Arrow
-      Topic: /odometry/filtered
+      Topic: /odom_cmd
       Unreliable: false
       Value: true
   Enabled: true
@@ -457,7 +529,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -1.5707963705062866
+      Angle: -1.4957972764968872
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -467,10 +539,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 37.90580749511719
+      Scale: 39.737205505371094
       Target Frame: <Fixed Frame>
-      X: 0
-      Y: 0
+      X: -0.5870410203933716
+      Y: -1.1308374404907227
     Saved: ~
 Window Geometry:
   Displays:
@@ -490,5 +562,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1279
-  X: 0
-  Y: 0
+  X: 479
+  Y: 27

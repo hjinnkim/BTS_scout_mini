@@ -80,6 +80,7 @@ void OdomConverter::PublishOdometry(){
 
     odom_msg.pose.pose.position.x += (linear_error_accumulate_[0] - initial_x_);
     odom_msg.pose.pose.position.y += (linear_error_accumulate_[1] - initial_y_);
+    odom_msg.pose.pose.position.z = 0.;
 
     odom_msg.pose.pose.orientation.x = q.getX();
     odom_msg.pose.pose.orientation.y = q.getY();

@@ -18,7 +18,7 @@
     <arg name="base_frame_id"             default="base_footprint"/>
 
     <!-- move_base parameters -->
-    <arg name="move_forward_only"         default="false" />
+    <arg name="move_forward_only"         default="true" />
     <!-- <arg name="odom_topic"                default="odom_cmd" /> -->
     <arg name="odom_topic"                default="odometry/filtered" />
     
@@ -47,7 +47,7 @@
     </include>
 
     <!-- EKF Localization -->
-    <include file="$(find scout_navigation)/launch/ekf_filter.launch" />
+    <!-- <include file="$(find scout_navigation)/launch/ekf_filter.launch" /> -->
 
     <!-- rviz -->
     <group if="$(arg open_rviz)">
